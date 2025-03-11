@@ -121,6 +121,9 @@ Entity::~Entity() {
     for (int i = 0; i < this->tasks.size(); i++) {
         delete this->tasks[i];
     }
+    for (int i = 0; i < this->hitboxes.size(); i++) {
+        delete this->hitboxes[i];
+    }
 }
 
 void Entity::checkWorldCollision() {
@@ -159,7 +162,7 @@ void Entity::checkWorldCollision() {
 
     // recalculate velocity
     if (collided) {
-        this->vel = this->oldPosition - this->pos;
+        this->vel = this->pos - this->oldPosition;
     }
 }
 
